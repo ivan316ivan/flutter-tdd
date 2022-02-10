@@ -19,6 +19,7 @@ class GetConcreteNumberTrivia implements UseCase<NumberTrivia, Params> {
 class Params extends Equatable {
   final int number;
 
+  // ignore: prefer_const_constructors_in_immutables
   Params({required this.number});
 
   @override

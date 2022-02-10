@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
 
 class NumberTrivia extends Equatable {
   final String text;
   final int number;
 
+  // ignore: prefer_const_constructors_in_immutables
   NumberTrivia({required this.text, required this.number});
 
   @override

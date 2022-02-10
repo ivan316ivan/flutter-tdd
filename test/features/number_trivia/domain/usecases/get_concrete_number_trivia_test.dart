@@ -16,7 +16,7 @@ import 'get_concrete_number_trivia_test.mocks.dart';
 ])
 void main() {
   // Init
-  final tNumber = 1;
+  const tNumber = 1;
   final tNumberTrivia = NumberTrivia(number: 1, text: 'test');
   final mockNumberTriviaRepository = MockNumberTriviaRepository();
   final usecase = GetConcreteNumberTrivia(mockNumberTriviaRepository);

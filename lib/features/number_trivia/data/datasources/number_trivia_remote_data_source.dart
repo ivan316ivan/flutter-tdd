@@ -1,13 +1,17 @@
-import 'package:course2/features/number_trivia/domain/entities/number_trivia.dart';
+import 'package:course2/features/number_trivia/data/models/number_trivia_model.dart';
 
 abstract class NumberTriviaRemoteDataSource {
   /// Calls the http://numbersapi.com/{number} endpoint.
   ///
   /// Throws a [ServerException] for all error codes.
-  Future<NumberTrivia> getConcreteNumberTrivia(int number);
+  ///
+  /// SHOULD ACTUALLY BE [<NUMBER TRIVIA>]
+  Future<NumberTriviaModel> getConcreteNumberTrivia(int number);
 
   /// Calls the http://numbersapi.com/random endpoint.
   ///
   /// Throws a [ServerException] for all error codes.
-  Future<NumberTrivia> getRandomNumberTrivia();
+  ///
+  /// SHOULD ACTUALLY BE [<NUMBER TRIVIA>]
+  Future<NumberTriviaModel> getRandomNumberTrivia();
 }
