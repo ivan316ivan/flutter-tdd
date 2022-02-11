@@ -4,7 +4,7 @@
 
 import 'dart:async' as _i4;
 
-import 'package:course2/core/platform/network_info.dart' as _i6;
+import 'package:course2/core/network/network_info.dart' as _i6;
 import 'package:course2/features/number_trivia/data/datasources/number_trivia_local_data_source.dart'
     as _i5;
 import 'package:course2/features/number_trivia/data/datasources/number_trivia_remote_data_source.dart'

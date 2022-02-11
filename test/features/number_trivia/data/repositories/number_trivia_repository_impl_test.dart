@@ -1,6 +1,6 @@
 import 'package:course2/core/error/exceptions.dart';
 import 'package:course2/core/error/failures.dart';
-import 'package:course2/core/platform/network_info.dart';
+import 'package:course2/core/network/network_info.dart';
 import 'package:course2/features/number_trivia/data/datasources/number_trivia_local_data_source.dart';
 import 'package:course2/features/number_trivia/data/datasources/number_trivia_remote_data_source.dart';
 import 'package:course2/features/number_trivia/data/models/number_trivia_model.dart';
