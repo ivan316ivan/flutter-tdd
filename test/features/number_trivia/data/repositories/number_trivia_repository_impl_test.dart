@@ -89,7 +89,7 @@ void main() {
           final result = await repository.getConcreteNumberTrivia(tNumber);
           // assert
           verify(mockRemoteDataSource.getConcreteNumberTrivia(tNumber));
-          // TODO: verifyZeroInteractions(mockLocalDataSource);
+          verifyNoMoreInteractions(mockLocalDataSource);
           expect(result, Left(ServerFailure()));
         },
       );
@@ -109,7 +109,7 @@ void main() {
           // act
           final result = await repository.getConcreteNumberTrivia(tNumber);
           // assert
-          // TODO: verifyZeroInteractions(mockRemoteDataSource);
+          verifyNoMoreInteractions(mockRemoteDataSource);
           verify(mockLocalDataSource.getLastNumberTrivia());
           expect(result, Right(tNumberTrivia));
         },
@@ -123,7 +123,7 @@ void main() {
           // act
           final result = await repository.getConcreteNumberTrivia(tNumber);
           // assert
-          // TODO: verifyZeroInteractions(mockRemoteDataSource);
+          verifyNoMoreInteractions(mockRemoteDataSource);
           verify(mockLocalDataSource.getLastNumberTrivia());
           expect(result, Left(CacheFailure()));
         },
@@ -189,7 +189,7 @@ void main() {
           final result = await repository.getRandomNumberTrivia();
           // assert
           verify(mockRemoteDataSource.getRandomNumberTrivia());
-          // TODO: verifyZeroInteractions(mockLocalDataSource);
+          verifyNoMoreInteractions(mockLocalDataSource);
           expect(result, Left(ServerFailure()));
         },
       );
@@ -209,7 +209,7 @@ void main() {
           // act
           final result = await repository.getRandomNumberTrivia();
           // assert
-          // TODO: verifyZeroInteractions(mockRemoteDataSource);
+          verifyNoMoreInteractions(mockRemoteDataSource);
           verify(mockLocalDataSource.getLastNumberTrivia());
           expect(result, Right(tNumberTrivia));
         },
@@ -223,7 +223,7 @@ void main() {
           // act
           final result = await repository.getRandomNumberTrivia();
           // assert
-          // TODO: verifyZeroInteractions(mockRemoteDataSource);
+          verifyNoMoreInteractions(mockRemoteDataSource);
           verify(mockLocalDataSource.getLastNumberTrivia());
           expect(result, Left(CacheFailure()));
         },
