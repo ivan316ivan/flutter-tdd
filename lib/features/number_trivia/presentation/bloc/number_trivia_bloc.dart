@@ -25,10 +25,12 @@ class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
       final inputEither =
           inputConverter.stringToUnsignedInteger(event.numberString);
 
-      inputEither.fold((failure) async* {
+      inputEither.fold((failure) {
         emit(Error(message: INVALID_INPUT_FAILURE_MESSAGE));
-      }, (integer) => throw UnimplementedError());
+      }, (integer) {
+        emit(Loading());
+        getConcreteNumberTrivia(Params(number: integer));
+      });
     });
-    
   }
 }
