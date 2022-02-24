@@ -21,22 +21,14 @@ class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
       required this.getRandomNumberTrivia,
       required this.inputConverter})
       : super(Empty()) {
-    on<NumberTriviaEvent>((event, emit) {
+    on<GetTriviaForConcreteNumber>((event, emit) {
+      final inputEither =
+          inputConverter.stringToUnsignedInteger(event.numberString);
 
-      @override
-      Stream<NumberTriviaState> mapEventToState(
-        NumberTriviaEvent event,
-      ) async* {
-        if (event is GetTriviaForConcreteNumber) {
-          final inputEither =
-              inputConverter.stringToUnsignedInteger(event.numberString);
-
-          yield* inputEither.fold((failure) async* {
-            yield Error(message: INVALID_INPUT_FAILURE_MESSAGE);
-          }, (integer) => throw UnimplementedError());
-        }
-      }
-      
+      inputEither.fold((failure) async* {
+        emit(Error(message: INVALID_INPUT_FAILURE_MESSAGE));
+      }, (integer) => throw UnimplementedError());
     });
+    
   }
 }
