@@ -1,7 +1,7 @@
 name: course2
 description: A new Flutter project.
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 version: 1.0.0+1
 
@@ -12,7 +12,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   cupertino_icons: ^1.0.2
   get_it: ^7.2.0
   flutter_bloc: ^8.0.1
@@ -21,6 +20,7 @@ dependencies:
   http: ^0.13.4
   shared_preferences: ^2.0.13
   connectivity_plus: ^2.2.0
+  bloc_test: ^9.0.2
 
 dev_dependencies:
   flutter_test:
@@ -31,6 +31,4 @@ dev_dependencies:
   build_runner: ^2.1.7
 
 flutter:
-
   uses-material-design: true
-
