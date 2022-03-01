@@ -37,7 +37,7 @@ void main() {
     expect(bloc.state, Empty());
   });
 
-  group('GetTriviaForConcreteNumber', () {
+  group('GetTriviaForConcreteNumber-1', () {
     const tNumberString = '1';
     const tNumberParsed = 1;
     final tNumberTrivia = NumberTrivia(text: 'test text', number: 1);
@@ -68,9 +68,12 @@ void main() {
           getConcreteNumberTrivia: mockGetConcreteNumberTrivia,
           getRandomNumberTrivia: mockGetRandomNumberTrivia,
           inputConverter: mockInputConverter),
-      act: (blocCurrent) => blocCurrent.add(GetTriviaForConcreteNumber(tNumberString)),
-      expect: () =>
-          <NumberTriviaState>[Error(message: INVALID_INPUT_FAILURE_MESSAGE)],
+      act: (blocCurrent) =>
+          blocCurrent.add(GetTriviaForConcreteNumber(tNumberString)),
+      expect: () => <NumberTriviaState>[
+        Loading(),
+        Error(message: INVALID_INPUT_FAILURE_MESSAGE)
+      ],
     );
 
     test(
@@ -94,8 +97,6 @@ void main() {
     blocTest<NumberTriviaBloc, NumberTriviaState>(
       'should emit [Loading, Loaded] when data is gotten successfully',
       setUp: () {
-        when(mockGetConcreteNumberTrivia(any))
-            .thenAnswer((_) async => Right(tNumberTrivia));
         when(mockInputConverter.stringToUnsignedInteger(any))
             .thenReturn(Right(tNumberParsed));
         when(mockGetConcreteNumberTrivia(any))
@@ -105,7 +106,8 @@ void main() {
           getConcreteNumberTrivia: mockGetConcreteNumberTrivia,
           getRandomNumberTrivia: mockGetRandomNumberTrivia,
           inputConverter: mockInputConverter),
-      act: (blocCurrent) => blocCurrent.add(GetTriviaForConcreteNumber(tNumberString)),
+      act: (blocCurrent) =>
+          blocCurrent.add(GetTriviaForConcreteNumber(tNumberString)),
       expect: () =>
           <NumberTriviaState>[Loading(), Loaded(trivia: tNumberTrivia)],
     );
@@ -113,8 +115,6 @@ void main() {
     blocTest<NumberTriviaBloc, NumberTriviaState>(
       'should emit [Loading, Error] when getting data FAILS',
       setUp: () {
-        when(mockGetConcreteNumberTrivia(any))
-            .thenAnswer((_) async => Right(tNumberTrivia));
         when(mockInputConverter.stringToUnsignedInteger(any))
             .thenReturn(Right(tNumberParsed));
         when(mockGetConcreteNumberTrivia(any))
@@ -124,7 +124,8 @@ void main() {
           getConcreteNumberTrivia: mockGetConcreteNumberTrivia,
           getRandomNumberTrivia: mockGetRandomNumberTrivia,
           inputConverter: mockInputConverter),
-      act: (blocCurrent) => blocCurrent.add(GetTriviaForConcreteNumber(tNumberString)),
+      act: (blocCurrent) =>
+          blocCurrent.add(GetTriviaForConcreteNumber(tNumberString)),
       expect: () => <NumberTriviaState>[
         Loading(),
         Error(message: SERVER_FAILURE_MESSAGE)
@@ -143,7 +144,8 @@ void main() {
           getConcreteNumberTrivia: mockGetConcreteNumberTrivia,
           getRandomNumberTrivia: mockGetRandomNumberTrivia,
           inputConverter: mockInputConverter),
-      act: (blocCurrent) => blocCurrent.add(GetTriviaForConcreteNumber(tNumberString)),
+      act: (blocCurrent) =>
+          blocCurrent.add(GetTriviaForConcreteNumber(tNumberString)),
       expect: () =>
           <NumberTriviaState>[Loading(), Error(message: CACHE_FAILURE_MESSAGE)],
     );
